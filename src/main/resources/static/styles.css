@@ -1,0 +1,32 @@
+body {
+    font-family: Arial;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+}
+
+td {
+    border-top: 1px solid grey;
+}
+
+.delete-button:hover {
+    background-color: red;
+    a {
+        color: white;
+    }
+}
+
+tr:nth-child(even) {
+    background-color: #e6e6e6;
+}
+
+table a {
+    color: red;
+    text-decoration: none;
+}

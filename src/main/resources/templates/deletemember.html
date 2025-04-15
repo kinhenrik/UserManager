@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin control panel</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+
+    <h1>Admin control panel</h1>
+
+    <table>
+        <thead>
+            <tr th:if="${#lists.isEmpty(members)}">
+                <th colspan="8">No members found</th>
+            </tr>
+            <tr th:if="${!#lists.isEmpty(members)}">
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>E-mail</th>
+                <th>Phone</th>
+                <th>Date of birth</th>
+            </tr>
+        </thead>
+        <tbody th:if="${!#lists.isEmpty(members)}">
+            <tr th:each="member: ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.firstName}"></td>
+                <td th:text="${member.lastName}"></td>
+                <td th:text="${member.address.street}"></td>
+                <td th:text="${member.email}"></td>
+                <td th:text="${member.phone}"></td>
+                <td th:text="${member.dateOfBirth}"></td>
+                <!--<td><button class="delete-button" th:onclick="@{'/admin/deleteMemberById/' + ${member.id}}">Delete member</button></td>-->
+                <td class="delete-button"><a th:href="@{'/admin/deleteMemberById/' + ${member.id}}">Delete member</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
